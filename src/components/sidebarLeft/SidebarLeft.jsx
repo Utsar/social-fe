@@ -115,14 +115,6 @@ const sidebarLeft = () => {
               />
               <span className="sidebarLeftFriendName">Ale</span>
             </li>
-            <li className="sidebarLeftFriend">
-              <img
-                className="sidebarLeftFriendImage"
-                src="/Assets/profiles/profile1.jpg"
-                alt=""
-              />
-              <span className="sidebarLeftFriendName">Ale</span>
-            </li>
           </ul>
         </div>
       </div>
