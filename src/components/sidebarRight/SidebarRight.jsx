@@ -26,6 +26,39 @@ const sidebarRight = () => {
               </div>
               <span className="rightbarFriendName">Lala</span>
             </li>
+            <li className="rightbarFriend">
+              <div className="rightbarProfileImageContainer">
+                <img
+                  src="/Assets/profiles/profile4.jpg"
+                  alt=""
+                  className="rightbarProfileImage"
+                />
+                <span className="rightbarOnline"></span>
+              </div>
+              <span className="rightbarFriendName">Lala</span>
+            </li>
+            <li className="rightbarFriend">
+              <div className="rightbarProfileImageContainer">
+                <img
+                  src="/Assets/profiles/profile4.jpg"
+                  alt=""
+                  className="rightbarProfileImage"
+                />
+                <span className="rightbarOnline"></span>
+              </div>
+              <span className="rightbarFriendName">Lala</span>
+            </li>
+            <li className="rightbarFriend">
+              <div className="rightbarProfileImageContainer">
+                <img
+                  src="/Assets/profiles/profile4.jpg"
+                  alt=""
+                  className="rightbarProfileImage"
+                />
+                <span className="rightbarOnline"></span>
+              </div>
+              <span className="rightbarFriendName">Lala</span>
+            </li>
           </ul>
         </div>
       </div>
