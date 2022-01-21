@@ -7,14 +7,14 @@ import Topbar from "../../components/topbar/Topbar.jsx";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Topbar />
       <div className="homeContainer">
         <SidebarLeft />
         <Feed />
         <SidebarRight />
       </div>
-    </div>
+    </>
   );
 };
 
