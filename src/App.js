@@ -1,5 +1,5 @@
-import Home from "./pages/home/Home";
-import Profile from "./pages/home/profile/Profile";
+import Home from "./pages/homePage/Home";
+import Profile from "./pages/profilePage/Profile";
 
 function App() {
   return (
