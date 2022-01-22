@@ -84,7 +84,7 @@ const sidebarRight = ({ profile }) => {
     <>
       <div className="sidebarRight">
         <div className="rightbarWrapper">
-          <ProfileSidebarRight />
+          {profile ? <ProfileSidebarRight /> : <HomeSidebarRight />}
         </div>
       </div>
     </>
