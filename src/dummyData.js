@@ -27,7 +27,7 @@ export const Posts = [
     userId: 1,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur euismod, nisl nunc euismod erat, euismod euismod nisl nunc euismod erat.",
-    photo: "/Assets/posts/post1.jpg",
+    photo: "posts/post1.jpg",
     date: "1 day ago",
     likes: 1,
     comments: 9,
@@ -37,7 +37,7 @@ export const Posts = [
     userId: 2,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur euismod, nisl nunc euismod erat, euismod euismod nisl nunc euismod erat.",
-    photo: "/Assets/posts/post2.jpg",
+    photo: "posts/post2.jpg",
     date: "2 days ago",
     likes: 2,
     comments: 8,
@@ -47,7 +47,7 @@ export const Posts = [
     userId: 3,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur euismod, nisl nunc euismod erat, euismod euismod nisl nunc euismod erat.",
-    photo: "/Assets/posts/post3.jpg",
+    photo: "posts/post3.jpg",
     date: "3 days ago",
     likes: 3,
     comments: 7,
