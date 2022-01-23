@@ -3,7 +3,7 @@ import "./sidebarRight.css";
 import { Users } from "../../dummyData";
 import Online from "../online/Online";
 
-const sidebarRight = ({ profile }) => {
+const sidebarRight = ({ user }) => {
   const HomeSidebarRight = () => {
     return (
       <>
@@ -30,18 +30,24 @@ const sidebarRight = ({ profile }) => {
         <h4 className="rightbarTitle">User info</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">City</span>
-            <span className="rightbarInfoValue">London</span>
+            <span className="rightbarInfoKey">City: </span>
+            <span className="rightbarInfoValue">{user.city}</span>
           </div>
           <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInfoValue">Estonia</span>
+            <span className="rightbarInfoKey">From: </span>
+            <span className="rightbarInfoValue">{user.from}</span>
           </div>
           <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">Relationship</span>
-            <span className="rightbarInfoValue">Married</span>
+            <span className="rightbarInfoKey">Relationship: </span>
+            <span className="rightbarInfoValue">
+              {user.relationship === 1
+                ? "Single"
+                : user.relationship === 2
+                ? "Married"
+                : "-"}
+            </span>
           </div>
-          <h4 className="rightbarTitle">User info</h4>
+          <h4 className="rightbarTitle">Friends</h4>
           <div className="rightbarFollowers">
             <div className="rightbarFollower">
               <img
@@ -84,7 +90,7 @@ const sidebarRight = ({ profile }) => {
     <>
       <div className="sidebarRight">
         <div className="rightbarWrapper">
-          {profile ? <ProfileSidebarRight /> : <HomeSidebarRight />}
+          {user ? <ProfileSidebarRight /> : <HomeSidebarRight />}
         </div>
       </div>
     </>

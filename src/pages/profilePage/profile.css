@@ -77,3 +77,8 @@
   object-fit: cover;
   border-radius: 50%;
 }
+.rightbarFollowerName {
+  display: flex;
+  align-self: center;
+  margin-top: 5px;
+}
