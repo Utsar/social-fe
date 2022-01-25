@@ -17,9 +17,23 @@ const Share = () => {
       userId: user._id,
       description: description.current.value,
     };
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("file", file);
+      data.append("name", fileName);
+      newPost.image = fileName;
+      try {
+        await axios.post("/upload", data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
     try {
       await axios.post("/posts", newPost);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="share">
@@ -30,7 +44,7 @@ const Share = () => {
             src={
               user.profilePicture
                 ? PF + user.profilePicture
-                : PF + "profiles/noAvatar.png"
+                : PF + "/profiles/noAvatar.png"
             }
             alt="profile"
           />

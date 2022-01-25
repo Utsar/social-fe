@@ -47,7 +47,7 @@ const Topbar = () => {
               src={
                 user.profilePicture
                   ? PF + user.profilePicture
-                  : PF + "profiles/noAvatar.png"
+                  : PF + "/profiles/noAvatar.png"
               }
               alt=""
               className="topbarImage"

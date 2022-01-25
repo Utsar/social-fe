@@ -49,7 +49,7 @@ const Post = ({ post }) => {
                 src={
                   user.profilePicture
                     ? PF + user.profilePicture
-                    : PF + "profiles/noAvatar.png"
+                    : PF + "/profiles/noAvatar.png"
                 }
                 alt="profile"
               />
@@ -65,20 +65,20 @@ const Post = ({ post }) => {
           <span className="postText">{post?.description}</span>
           <img
             className="postImage"
-            src={post.image || PF + "posts/post1.jpg"}
+            src={post.image || PF + "/posts/post1.jpg"}
             alt="post"
           />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
             <img
-              src={`${PF}like.png`}
+              src={`${PF}/like.png`}
               alt=""
               className="likeIcon"
               onClick={likeHandler}
             />
             <img
-              src={`${PF}heart.png`}
+              src={`${PF}/heart.png`}
               alt=""
               className="heartIcon"
               onClick={likeHandler}

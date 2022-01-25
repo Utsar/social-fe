@@ -29,12 +29,12 @@ const Profile = () => {
           <div className="profileRightTop">
             <div className="profileCover">
               <img
-                src={user.coverPicture || PF + "profiles/noCover.jpg"}
+                src={user.coverPicture || PF + "/profiles/noCover.jpg"}
                 alt=""
                 className="profileCoverImage"
               />
               <img
-                src={user.profilePicture || PF + "profiles/noAvatar.png"}
+                src={user.profilePicture || PF + "/profiles/noAvatar.png"}
                 alt=""
                 className="profileUserImage"
               />
