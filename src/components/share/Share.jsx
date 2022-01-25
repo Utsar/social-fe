@@ -1,5 +1,11 @@
 import "./share.css";
-import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
+import {
+  PermMedia,
+  Label,
+  Room,
+  EmojiEmotions,
+  Cancel,
+} from "@material-ui/icons";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useRef } from "react";
@@ -20,9 +26,10 @@ const Share = () => {
     if (file) {
       const data = new FormData();
       const fileName = Date.now() + file.name;
-      data.append("file", file);
       data.append("name", fileName);
+      data.append("file", file);
       newPost.image = fileName;
+      console.log(newPost);
       try {
         await axios.post("/upload", data);
       } catch (error) {
@@ -55,6 +62,19 @@ const Share = () => {
           />
         </div>
         <hr className="shareHr" />
+        {file && (
+          <div className="shareImageContainer">
+            <img
+              src={URL.createObjectURL(file)}
+              alt=""
+              className="shareImage"
+            />
+            <Cancel
+              className="shareCancelImage"
+              onClick={() => setFile(null)}
+            />
+          </div>
+        )}
         <form className="shareBottom" onSubmit={submitHandler}>
           <div className="shareOptions">
             <label htmlFor="file" className="shareOption">
@@ -64,7 +84,7 @@ const Share = () => {
                 style={{ display: "none" }}
                 type="file"
                 id="file"
-                accept=".png, .jpg, .jpeg"
+                accept=".png,.jpg,.jpeg"
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </label>
@@ -81,9 +101,9 @@ const Share = () => {
               <span className="shareOptionText">Feelings</span>
             </div>
           </div>
-          <div className="shareButton" type="submit">
+          <button className="shareButton" type="submit">
             Share
-          </div>
+          </button>
         </form>
       </div>
     </div>
