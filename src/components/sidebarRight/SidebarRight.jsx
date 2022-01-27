@@ -57,7 +57,7 @@ export default function SidebarRight({ user }) {
         <div className="birthdayContainer">
           <img src="/Assets/gift.png" alt="" className="birthdayImage" />
           <span className="birthdayText">
-            <b>Lala</b> and <b>3 other frineds </b>have bday today
+            <b>Beer</b> and <b>3 other frineds </b>have bday today
           </span>
         </div>
         <img src="/Assets/ad.jpg" alt="" className="rightbarAd" />
@@ -104,6 +104,7 @@ export default function SidebarRight({ user }) {
           <div className="rightbarFollowers">
             {friends.map((friend) => (
               <Link
+                key={friend._id}
                 style={{ textDecoration: "none" }}
                 to={"/profile/" + friend.username}
               >

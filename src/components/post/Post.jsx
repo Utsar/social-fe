@@ -30,7 +30,9 @@ const Post = ({ post }) => {
   const likeHandler = () => {
     try {
       axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
     setLikes(isLiked ? likes - 1 : likes + 1);
     setIsLiked(!isLiked);
   };
