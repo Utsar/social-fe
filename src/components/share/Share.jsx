@@ -32,12 +32,14 @@ const Share = () => {
       console.log(newPost);
       try {
         await axios.post("/upload", data);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
     }
     try {
       await axios.post("/posts", newPost);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +53,7 @@ const Share = () => {
             src={
               user.profilePicture
                 ? PF + user.profilePicture
-                : PF + "/profiles/noAvatar.png"
+                : PF + "profiles/noAvatar.png"
             }
             alt="profile"
           />

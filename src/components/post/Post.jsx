@@ -42,20 +42,20 @@ const Post = ({ post }) => {
           <div className="postTopLeft">
             <Link
               style={{ textDecoration: "none " }}
-              to={`profile/${user.username}`}
+              to={`/profile/${user.username}`}
             >
               <img
                 className="postProfileImage"
                 src={
                   user.profilePicture
                     ? PF + user.profilePicture
-                    : PF + "/profiles/noAvatar.png"
+                    : PF + "profiles/noAvatar.png"
                 }
                 alt="profile"
               />
             </Link>
             <span className="postUsername">{user.username}</span>
-            <span className="postDate">{format(post.createdAT)}</span>
+            <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
             <MoreVert htmlColor="grey" className="postIcon" />
@@ -65,20 +65,20 @@ const Post = ({ post }) => {
           <span className="postText">{post?.description}</span>
           <img
             className="postImage"
-            src={post.image || PF + "/posts/post1.jpg"}
-            alt="post"
+            src={post.image || PF + post.image}
+            alt=""
           />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
             <img
-              src={`${PF}/like.png`}
+              src={`${PF}like.png`}
               alt=""
               className="likeIcon"
               onClick={likeHandler}
             />
             <img
-              src={`${PF}/heart.png`}
+              src={`${PF}heart.png`}
               alt=""
               className="heartIcon"
               onClick={likeHandler}
