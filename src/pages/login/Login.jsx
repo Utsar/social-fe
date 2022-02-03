@@ -20,10 +20,7 @@ const Login = () => {
         email: email.current.value,
         password: password.current.value,
       });
-      dispatch({
-        type: "LOGIN_SUCCESS",
-        payload: response.data,
-      });
+      localStorage.setItem("user", JSON.stringify(response.data));
     } catch (error) {
       console.log(error);
     }
