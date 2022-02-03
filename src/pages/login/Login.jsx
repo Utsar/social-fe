@@ -21,6 +21,8 @@ const Login = () => {
         password: password.current.value,
       });
       localStorage.setItem("user", response.data.user);
+      dispatch({ type: "LOGIN_SUCCESS", payload: response.data.user });
+      console.log(response.data.user);
     } catch (error) {
       console.log(error);
     }
