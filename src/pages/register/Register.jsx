@@ -2,6 +2,7 @@ import { useRef } from "react";
 import "./register.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import backend from "../../Backend";
 
 const Register = () => {
   const username = useRef();
@@ -22,7 +23,7 @@ const Register = () => {
         password: password.current.value,
       };
       try {
-        await axios.post("/auth/register", user);
+        await backend.post("/auth/register", user);
         navigate("/login");
       } catch (error) {
         console.log(error);

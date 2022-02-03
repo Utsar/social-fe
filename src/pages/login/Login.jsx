@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { CircularProgress } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import backend from "../../Backend";
 
 const Login = () => {
   const email = useRef();
@@ -12,12 +13,20 @@ const Login = () => {
 
   const { isFetching, dispatch } = useContext(AuthContext);
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
-    loginCall(
-      { email: email.current.value, password: password.current.value },
-      dispatch
-    );
+    try {
+      const response = await backend.post("/auth/login", {
+        email: email.current.value,
+        password: password.current.value,
+      });
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
   // console.log(user);
   return (

@@ -16,7 +16,7 @@ export const Users = [
   },
   {
     id: 4,
-    username: "Camen Hells",
+    username: "Camden Hells",
     profilePicture: "https://randomuser.me/api/portraits/lego/4.jpg",
   },
 ];
