@@ -20,7 +20,7 @@ const Login = () => {
         email: email.current.value,
         password: password.current.value,
       });
-      localStorage.setItem("user", JSON.stringify(response.data));
+      localStorage.setItem("user", response.data.user);
     } catch (error) {
       console.log(error);
     }
