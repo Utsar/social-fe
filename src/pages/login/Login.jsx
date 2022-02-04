@@ -13,21 +13,13 @@ const Login = () => {
 
   const { isFetching, dispatch } = useContext(AuthContext);
 
-  const handleClick = async (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
-    try {
-      const response = await backend.post("/auth/login", {
-        email: email.current.value,
-        password: password.current.value,
-      });
-
-      dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
-      console.log(response.data.user);
-    } catch (error) {
-      console.log(error);
-    }
+    loginCall(
+      { email: email.current.value, password: password.current.value },
+      dispatch
+    );
   };
-  // console.log(user);
   return (
     <>
       <div className="login">
