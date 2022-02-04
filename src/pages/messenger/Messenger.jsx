@@ -3,6 +3,7 @@ import "./messenger.css";
 import Topbar from "../../components/topbar/Topbar.jsx";
 import Conversation from "../../components/conversations/Conversation";
 import Message from "../../components/message/Message";
+import ChatOnline from "../../components/chatOnline/ChatOnline";
 
 const Messenger = () => {
   return (
@@ -23,14 +24,51 @@ const Messenger = () => {
         </div>
         <div className="chatBox">
           <div className="chatBoxWrapper">
-            <div className="xhatBoxTop">
+            <div className="chatBoxTop">
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message />
+              <Message own={true} />
               <Message />
             </div>
-            <div className="xhatBoxBottom"></div>
+            <div className="chatBoxBottom">
+              <textarea
+                placeholder="write something..."
+                className="chatBoxBottomInput"
+              ></textarea>
+              <button className="chatBoxBottomButton">Send</button>
+            </div>
           </div>
         </div>
         <div className="chatOnline">
-          <div className="chatOnlineWrapper">Online</div>
+          <div className="chatOnlineWrapper">
+            <ChatOnline />
+          </div>
         </div>
       </div>
     </>

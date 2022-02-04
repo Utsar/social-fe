@@ -3,7 +3,7 @@ import "./message.css";
 export default function Message({ own }) {
   return (
     <>
-      <div className="message own">
+      <div className={own ? "message own" : "message"}>
         <div className="messageTop">
           <img
             src="https://randomuser.me/api/portraits/lego/2.jpg"
