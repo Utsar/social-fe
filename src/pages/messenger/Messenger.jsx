@@ -7,23 +7,55 @@ import ChatOnline from "../../components/chatOnline/ChatOnline";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import backend from "../../Backend";
+import { io } from "socket.io-client";
 
 const Messenger = () => {
   const [conversations, setConversations] = useState([]);
   const [messages, setMessages] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [newMessage, setNewMessage] = useState("");
+  const [recieveMessage, setRecieveMessage] = useState(null);
+  const [onlineUsers, setOnlineUsers] = useState([]);
+
+  const socket = useRef();
   const { user } = useContext(AuthContext);
   const scrollRef = useRef();
+
+  // make socket run only once & receiving message
+  useEffect(() => {
+    socket.current = io("ws://localhost:8900");
+    socket.current.on("recieveMessage", (data) => {
+      setRecieveMessage({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: Date.now(),
+      });
+    });
+  }, []);
+
+  // receive only messages from itended chat
+  useEffect(() => {
+    recieveMessage &&
+      currentChat?.members.includes(recieveMessage.sender) &&
+      setMessages((previous) => [...previous, recieveMessage]);
+  }, [recieveMessage]);
+
+  // socket & online users
+  useEffect(() => {
+    socket.current.emit("addUser", user._id);
+    socket.current.on("getUsers", (users) => {
+      setOnlineUsers(
+        user.followers.filter((f) => users.some((u) => u.userId === f))
+      );
+    });
+  }, [user]);
 
   // fetching conversations
   useEffect(() => {
     const getConversations = async () => {
       try {
         const response = await backend.get("/conversations/" + user._id);
-        console.log(user);
-        console.log(user._id);
-        console.log(response.data);
+
         setConversations(response.data);
       } catch (error) {
         console.log(error);
@@ -58,6 +90,15 @@ const Messenger = () => {
       sender: user._id,
       conversationId: currentChat._id,
     };
+    // send message
+    const receiverId = currentChat.members.find(
+      (member) => member._id !== user._id
+    );
+    socket.current.emit("sendMessage", {
+      senderId: user._id,
+      receiverId,
+      text: newMessage,
+    });
     try {
       const response = await backend.post("/messages", message);
       setMessages([...messages, response.data]);
@@ -78,6 +119,7 @@ const Messenger = () => {
               placeholder="Search for Friends"
               className="chatMenuInput"
             />
+            {/* map out frinends conversations */}
             {conversations.map((c) => (
               <div onClick={() => setCurrentChat(c)}>
                 <Conversation key={c._id} conversation={c} currentUser={user} />
@@ -123,7 +165,11 @@ const Messenger = () => {
         </div>
         <div className="chatOnline">
           <div className="chatOnlineWrapper">
-            <ChatOnline />
+            <ChatOnline
+              onlineUsers={onlineUsers}
+              currentId={user._id}
+              setCurrentChat={setCurrentChat}
+            />
           </div>
         </div>
       </div>
